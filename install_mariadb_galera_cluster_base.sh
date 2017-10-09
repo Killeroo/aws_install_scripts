@@ -18,7 +18,7 @@ apt-get update
 apt-get install -y mariadb-server
 
 # Create account and login
-user = "galera-node-$1";
+user="galera-node-$1"
 adduser --system --home /home/$user --disabled-password --shell /bin/bash $user
 (echo "password"; echo "password"; ) | passwd $user
 usermod -aG sudo $user
