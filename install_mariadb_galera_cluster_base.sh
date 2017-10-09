@@ -1,6 +1,12 @@
 #!/bin/bash
 # Install prerequisuite packages for a active-passive galera cluster
 
+# Arguments check
+if [ $# -eq 0 ]; then
+	echo "Please specify node number";
+	exit;
+fi
+
 # Get basic packages 
 apt-get update -y
 apt-get install -y nano git software-properties-common rsync sudo
@@ -12,7 +18,8 @@ apt-get update
 apt-get install -y mariadb-server
 
 # Create account and login
-adduser --system --home /home/galera-node --disabled-password --shell /bin/bash galera-node
-(echo "password"; echo "password"; ) | passwd galera-node
-usermod -aG sudo galera-node
-su - galera-node
+user = "galera-node-$1";
+adduser --system --home /home/$user --disabled-password --shell /bin/bash $user
+(echo "password"; echo "password"; ) | passwd $user
+usermod -aG sudo $user
+su - $user
