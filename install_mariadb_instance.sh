@@ -12,7 +12,7 @@ sudo service mysql start
 (echo "password"; echo "n"; echo "n"; echo "n"; echo "n"; echo "n";) | sudo mysql_secure_installation
 
 # Create and login as new user
-sudo adduser --system --home /home/donate --disabled-password --shell /bin/bash donate
-(echo "password"; echo "password"; ) | sudo passwd donate
-sudo usermod -aG sudo donate
-sudo su - donate
+sudo adduser --system --home /home/user --disabled-password --shell /bin/bash user
+(echo "password"; echo "password"; ) | sudo passwd user
+sudo usermod -aG sudo user
+sudo su - user
