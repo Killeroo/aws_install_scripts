@@ -10,4 +10,4 @@ sudo galera_new_cluster
 sudo systemctl start mysql
 
 # Display cluster info
-mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_cluster_size'"
+sudo mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_cluster_size'"

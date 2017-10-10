@@ -38,6 +38,7 @@ echo "##########################################################################
 echo "**REMEMBER TO REPLACE wsrep_cluster_address=\"gcomm://first_ip,second_ip,third_ip\"**";
 echo "  In /etc/mysql/conf.d/galera.cnf"
 echo "#####################################################################################";
+echo
 
 # Create account and login
 sudo adduser --system --home /home/$user --disabled-password --shell /bin/bash $user
