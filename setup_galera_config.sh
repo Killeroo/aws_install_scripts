@@ -1,5 +1,12 @@
 #!/bin/bash
 
+echo 
+echo "####################WARNING#######################"
+echo "  Run script with 'bash setup_galera_config.sh'"
+echo "               AND run as root"
+echo "###################################################"
+echo 
+
 # Check script is running as root
 if [[ $EUID -ne 0 ]]; then
 	echo "Please run script as root"
