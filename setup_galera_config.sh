@@ -24,6 +24,6 @@ if [ ! -f /etc/mysql/conf.d/galera.cnf ]; then
 fi
 
 # Update config
-sudo echo "wsrep_cluster_address=\"gcomm://first_ip,second_ip,third_ip\"" >> /etc/mysql/conf.d/galera.cnf
+sudo echo "wsrep_cluster_address=\"gcomm://$node_1_ip,$node_2_ip,$node_3_ip\"" >> /etc/mysql/conf.d/galera.cnf
 
 echo "##### CONFIG UPDATED WITH NODE ADDRESSES #####";
