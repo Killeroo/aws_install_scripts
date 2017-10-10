@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Check script is running as root
+if [ "$EUID" -ne 0 ]; then
+	echo "Please run script as root"
+	exit;
+fi
+
 # Argument check 
 if [ $# -lt 3 ]; then
 	echo -n "Enter galera_node_1 ip: ";

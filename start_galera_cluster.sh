@@ -3,6 +3,9 @@
 # Stop mysql service
 sudo systemctl stop mysql
 
+# Setup new cluster
+sudo galera_new_cluster
+
 # Restart mysql
 sudo systemctl start mysql
 
