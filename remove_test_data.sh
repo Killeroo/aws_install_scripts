@@ -1,3 +1,3 @@
 #!/bin/bash
 
-mysql -u root -p -e 'DROP DATABASE db_test;'
+mysql -u root -p -e 'DROP DATABASE IF EXISTS test_db;'
