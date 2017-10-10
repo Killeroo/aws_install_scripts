@@ -16,7 +16,7 @@ apt-get install -y nano git software-properties-common rsync sudo ufw
 
 # Install most recent version of mariadb-server
 apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
-add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://nyc2.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu xenial main'
+add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://ftp.utexas.edu/mariadb/repo/10.1/ubuntu xenial main';#'deb [arch=amd64,i386,ppc64el] http://nyc2.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu xenial main'
 apt-get update
 apt-get install -y mariadb-server
 
@@ -33,11 +33,14 @@ ufw allow 4567/udp
 ufw allow 22/tcp
 ufw status
 
+echo
+echo "#####################################################################################";
+echo "**REMEMBER TO REPLACE wsrep_cluster_address=\"gcomm://first_ip,second_ip,third_ip\"**";
+echo "  In /etc/mysql/conf.d/galera.cnf"
+echo "#####################################################################################";
+
 # Create account and login
 adduser --system --home /home/$user --disabled-password --shell /bin/bash $user
 (echo "password"; echo "password"; ) | passwd $user
 usermod -aG sudo $user
 su - $user
-
-echo "**REMEMBER TO REPLACE wsrep_cluster_address=\"gcomm://first_ip,second_ip,third_ip\"**";
-echo "In /etc/mysql/conf.d/galera.cnf"
