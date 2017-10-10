@@ -1,8 +1,8 @@
 #!/bin/bash
 
 mysql -u root -p -e '
-CREATE DATABASE test_db;
-CREATE TABLE test_db.people (id INT NOT NULL AUTO_INCREMENT, fname VARCHAR(25), sname VARCHAR(25), age INT, PRIMARY KEY(id));
+CREATE DATABASE IF NOT EXISTS test_db;
+CREATE TABLE IF NOT EXISTS test_db.people (id INT NOT NULL AUTO_INCREMENT, fname VARCHAR(25), sname VARCHAR(25), age INT, PRIMARY KEY(id));
 INSERT INTO test_db.people (fname, sname, age) VALUES ("Trent", "Reznor", 52);
 INSERT INTO test_db.people (fname, sname, age) VALUES ("Stephen", "Carpenter", 47);
 INSERT INTO test_db.people (fname, sname, age) VALUES ("Chino", "Moreno", 44);
