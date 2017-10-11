@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#TODO Switch to take and us array of ip address
 echo 
 echo "####################WARNING#######################"
 echo "  Run script with 'bash setup_galera_config.sh'"
