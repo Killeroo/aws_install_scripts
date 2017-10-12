@@ -2,11 +2,11 @@
 # Updates an existing galera config file with new node data
 
 function update-cluster-addresses {
-	sed -i '21s/.*/wsrep_cluster_address="gcomm://$1"/' /etc/mysql/conf.d/galera.cnf
+	sed -i '21s/wsrep_cluster_address="gcomm://$1"/' /etc/mysql/conf.d/galera.cnf
 }
 
 function update-new-ip {
-	sed -i '19s/.*/wsrep_node_address="$1"/' /etc/mysql/conf.d/galera.cnf
+	sed -i '19s/wsrep_node_address="$1"/' /etc/mysql/conf.d/galera.cnf
 }
 
 echo 
