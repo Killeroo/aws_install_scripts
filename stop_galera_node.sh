@@ -4,4 +4,4 @@
 sudo systemctl stop mysql
 
 # Show mysql/maria/galera service status
-sudo systemctl status mysql
+sudo systemctl --no-pager --lines=0 status mysql
