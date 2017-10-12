@@ -38,7 +38,7 @@ echo "##########################################################################
 echo "**REMEMBER TO REPLACE wsrep_cluster_address=\"gcomm://first_ip,second_ip,third_ip\"**";
 echo "                       @ /etc/mysql/conf.d/galera.cnf"
 echo
-echo "        				OR run 'setup_galera_config.sh'"
+echo "                       OR run 'setup_galera_config.sh'"
 echo "#####################################################################################";
 echo
 
