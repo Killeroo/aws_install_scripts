@@ -12,7 +12,7 @@ fi
 
 # Get basic packages 
 sudo apt-get update -y
-sudo apt-get install -y nano git software-properties-common rsync sudo ufw
+sudo apt-get install -y nano git software-properties-common rsync sudo ufw expect
 
 # Install most recent version of mariadb-server
 sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
@@ -34,12 +34,12 @@ sudo ufw allow 22/tcp
 sudo ufw status
 
 echo
-echo "#####################################################################################";
-echo "**REMEMBER TO REPLACE wsrep_cluster_address=\"gcomm://first_ip,second_ip,third_ip\"**";
-echo "                       @ /etc/mysql/conf.d/galera.cnf"
+echo "###########################################################################";
+echo "                      **REMEMBER TO REPLACE**"
+echo "wsrep_cluster_address=\"gcomm://\" @ /etc/mysql/conf.d/galera.cnf"
 echo
-echo "                       OR run 'setup_galera_config.sh'"
-echo "#####################################################################################";
+echo "                  OR run 'setup_galera_config.sh'"
+echo "###########################################################################";
 echo
 
 # Create account and login
