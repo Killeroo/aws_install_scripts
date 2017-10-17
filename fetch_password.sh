@@ -2,8 +2,9 @@
 
 # Takes mysql or account argument
 
-# Check if bash (shell) or sh (subshell) is running script
-[[ $_ != $0 ]] && echo "Script is being sourced" || echo "Script is a subshell"
+# Check if bash (sourced) or sh (subshell) is running script
+[[ $_ != $0 ]] && sourced=1 || sourced=0
+echo $sourced
 
 
 # Arguments check
