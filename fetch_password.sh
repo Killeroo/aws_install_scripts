@@ -12,7 +12,7 @@ fi
 # Arguments check
 if [ $# -ne 1 ]; then
 	echo "Incorrect argument count:"
-	echo "fetch_password [mysql] OR [general]"
+	echo "fetch_password [mysql] OR [account]"
 	exit
 fi
 
@@ -26,13 +26,11 @@ fi
 # Check password.conf passwords is not empty
 
 if [ "$1" == "mysql" ]; then
-	echo "fine"
-fi
-
-if [ "$1" == "general"]; then
-	echo "also fine"
+	grep 'mysql_password=' $PWD/password.conf | awk -F= '{ print  $2 }'
+elif [ "$1" == "account" ]; then
+	grep 'account_password=' $PWD/password.conf | awk -F= '{ print  $2 }'
 else
-	echo "i dont know that"
+	echo "Unrecognised argument: Please use either [mysql] OR [account]"
 fi
 
 # Fetch password from conf file
