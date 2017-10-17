@@ -1,11 +1,12 @@
 #!/bin/bash
 #TODO Switch to take and us array of ip address
-echo 
-echo "####################WARNING#######################"
-echo "  Run script with 'bash setup_galera_config.sh'"
-echo "               AND run as root"
-echo "###################################################"
-echo 
+
+# Check if script is being run with bash
+[[ $_ != $0 ]] && sourced=1 || sourced=0
+if [ $sourced -ne 1 ]; then
+	echo "Please use 'bash setup_galera_config.sh to run the script"
+	exit;
+fi
 
 # Check script is running as root
 if [[ $EUID -ne 0 ]]; then

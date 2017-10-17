@@ -11,12 +11,12 @@ function update-new-ip {
 	echo "Updated galera_node_address -> $1"
 }
 
-echo 
-echo "####################WARNING#######################"
-echo "  Run script with 'bash setup_galera_config.sh'"
-echo "               AND run as root"
-echo "###################################################"
-echo 
+# Check if script is being run with bash
+[[ $_ != $0 ]] && sourced=1 || sourced=0
+if [ $sourced -ne 1 ]; then
+	echo "Please use 'bash update_galera_config.sh to run the script"
+	exit;
+fi
 
 # Root check
 if [[ $EUID -ne 0 ]]; then
