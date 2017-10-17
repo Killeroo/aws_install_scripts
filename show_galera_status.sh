@@ -2,7 +2,7 @@
 
 password=$(bash $PWD/fetch_password.sh mysql)
 
-expect $PWD/enter_password.exp $password $command 
+expect $PWD/enter_password.exp $password 
 
 # Show mysql/maria/galera service status
 sudo systemctl --no-pager --lines=0 status mysql
