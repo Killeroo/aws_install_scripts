@@ -1,6 +1,8 @@
 #!/bin/bash
 
-bash $PWD/fetch_password.sh mysql
+test=$(bash $PWD/fetch_password.sh mysql)
+
+echo "testetest meow meow meo $test"
 
 # Show mysql/maria/galera service status
 sudo systemctl --no-pager --lines=0 status mysql
