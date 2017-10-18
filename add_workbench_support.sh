@@ -31,4 +31,4 @@ sudo echo "KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sh
 # Restart SSH service
 sudo systemctl restart ssh
 
-echo "***SSH CONFIG UPDATED***
+echo "***SSH CONFIG UPDATED***"
