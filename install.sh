@@ -30,7 +30,6 @@ case "$response" in
 		sudo bash ./src/start_galera_cluster.sh
 		;;
 	*)
-		exit;
 		sudo bash ./src/start_galera_node.sh
 		;;
 esac
