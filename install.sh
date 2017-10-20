@@ -21,9 +21,8 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # Run scripts
-
-sudo bash ./src/install_mariadb_galera_cluster_base.sh $1 $2 # Base install
-sudo bash ./src/update_galera_config.sh $3 # Update cluster 
+sudo bash ./src/install_mariadb_galera_cluster_base.sh $1 $2 
+sudo bash ./src/update_galera_config.sh $3 
 read -r -p "Setting up main node? [Y/n] " response
 case "$response" in 
 	[yY][eE][sS]|[yY])

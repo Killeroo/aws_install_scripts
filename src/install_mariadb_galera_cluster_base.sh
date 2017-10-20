@@ -21,7 +21,7 @@ sudo apt-get update
 sudo apt-get install -y mariadb-server
 
 # Copy and update galera config
-sudo mv ./galera.cnf /etc/mysql/conf.d/galera.cnf
+sudo cp ./galera.cnf /etc/mysql/conf.d/galera.cnf
 echo "wsrep_node_address=\"$node_ip\"" >> /etc/mysql/conf.d/galera.cnf
 echo "wsrep_node_name=\"$user\"" >> /etc/mysql/conf.d/galera.cnf
 echo "wsrep_cluster_address=\"gcomm://1.1.1.1,2.2.2.2,3.3.3.3\"" >> /etc/mysql/conf.d/galera.cnf
