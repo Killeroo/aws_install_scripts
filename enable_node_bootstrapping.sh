@@ -1,17 +1,5 @@
 #!/bin/bash
 
-read -r -p "Continue? [Y/n] " response
-case "$response" in 
-	[yY][eE][sS]|[yY])
-		echo "yeah go on then"
-		;;
-	*)
-		echo "no thank you"
-		;;
-esac
-
-exit
-
 # Check if script is being run with bash
 [[ $_ != $0 ]] && sourced=1 || sourced=0
 if [ $sourced -ne 1 ]; then
@@ -33,6 +21,17 @@ echo " (It enables starting node even if it was not the last node to exit cluste
 echo "###########################################################################";
 echo 
 
+read -r -p "Continue? [Y/n] " response
+case "$response" in 
+	[yY][eE][sS]|[yY])
+		;;
+	*)
+		exit;
+		;;
+esac
+
+echo "here"
+exit
 
 # Check file exists
 if [ ! -f /etc/mysql/conf.d/galera.cnf ]; then
