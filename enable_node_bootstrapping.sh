@@ -17,7 +17,7 @@ echo
 echo "###########################################################################";
 echo "                         ***WARNING***"
 echo "          ONLY RUN THIS SCRIPT ON THE MAIN CLUSTER NODE"
-echo " (It enables starting node even if it was not the last node to exit cluster)"
+echo "(It enables starting node even if it was not the last node to exit cluster)"
 echo "###########################################################################";
 echo 
 
@@ -30,16 +30,16 @@ case "$response" in
 		;;
 esac
 
-echo "here"
-exit
-
 # Check file exists
-if [ ! -f /etc/mysql/conf.d/galera.cnf ]; then
-	echo "      ******Galera config file not found********"
-	echo "Run install_mariadb_galera_cluster_base.sh and try again"
+if [ ! -f /var/lib/mysql/grastate.dat ]; then
+	echo "      ******/var/lib/mysql/grastate.dat not found********"
+	echo "Make sure MariaDB galera is installed correctly then try again"
 	echo
 	exit;
 fi
+
+echo "found it"
+exit
 
 sed -i "s|wsrep_cluster_address=.*|wsrep_cluster_address=\"gcomm://$1\"|" /etc/mysql/conf.d/galera.cnf
 echo "Updated safe_to_bootstrap -> 1"
