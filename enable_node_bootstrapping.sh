@@ -38,8 +38,5 @@ if [ ! -f /var/lib/mysql/grastate.dat ]; then
 	exit;
 fi
 
-echo "found it"
-exit
-
-sed -i "s|wsrep_cluster_address=.*|wsrep_cluster_address=\"gcomm://$1\"|" /etc/mysql/conf.d/galera.cnf
-echo "Updated safe_to_bootstrap -> 1"
+sed -i "s|safe_to_bootstrap:.*|safe_to_bootstrap: 1|" /var/lib/mysql/grastate.dat
+echo "Enabled safe_to_bootstrap for galera"
