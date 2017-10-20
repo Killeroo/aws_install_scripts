@@ -11,9 +11,12 @@ To test cluster:
 
 To start and stop node:
 
-`sudo bash start.sh`
+`sh start.sh`
 
 and
 
-`sudo bash stop.sh`
+`sh stop.sh`
 
+For current galera status use
+
+`sudo bash status`
