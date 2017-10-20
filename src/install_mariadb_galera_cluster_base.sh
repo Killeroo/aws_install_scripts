@@ -24,7 +24,7 @@ sudo apt-get install -y mariadb-server
 sudo mv ./galera.cnf /etc/mysql/conf.d/galera.cnf
 echo "wsrep_node_address=\"$node_ip\"" >> /etc/mysql/conf.d/galera.cnf
 echo "wsrep_node_name=\"$user\"" >> /etc/mysql/conf.d/galera.cnf
-echo "#wsrep_cluster_address=\"gcomm://first_ip,second_ip,third_ip\"" >> /etc/mysql/conf.d/galera.cnf
+echo "wsrep_cluster_address=\"gcomm://1.1.1.1,2.2.2.2,3.3.3.3\"" >> /etc/mysql/conf.d/galera.cnf
 
 # Setup galera firewalls exceptions (including SSH and workbench)
 sudo ufw enable
@@ -46,4 +46,4 @@ echo
 sudo adduser --system --home /home/$user --disabled-password --shell /bin/bash $user
 (echo "password"; echo "password"; ) | sudo passwd $user
 sudo usermod -aG sudo $user
-sudo su - $user
+#sudo su - $user
