@@ -22,10 +22,19 @@ fi
 
 # Run scripts
 sudo bash ./src/install_mariadb_galera_cluster_base.sh $1 $2 
+read -r -p "Would you like to add support for MySQL Workbench? [Y/n] " response
+case "$response" in 
+	[yY][eE][sS]|[yY])
+		sudo bash ./src/add_workbench_support.sh
+		;;
+	*)
+		;;
+esac
 sudo bash ./src/update_galera_config.sh $3 
 read -r -p "Setting up main node? [Y/n] " response
 case "$response" in 
 	[yY][eE][sS]|[yY])
+		sudo bash ./src/enable_node_bootstrapping
 		sudo bash ./src/start_galera_cluster.sh
 		;;
 	*)
