@@ -18,12 +18,12 @@ if [ ! -f $org_dir/passwords.conf ]; then
 fi
 
 # Fetch appropriate password
-if [ "$1" == "mysql" ]; then
+if [ $1 = "mysql" ]; then
 	grep 'mysql_password=' $org_dir/passwords.conf | awk -F= '{ print  $2 }'
-elif [ "$1" == "account" ]; then
+elif [ $1 = "account" ]; then
 	grep 'account_password=' $org_dir/passwords.conf | awk -F= '{ print  $2 }'
-elif [ "$1" == "new-relic" ]; then
+elif [ $1 = "new-relic" ]; then
 	grep 'new-relic_key=' $org_dir/passwords.conf | awk -F= '{ print  $2 }'
 else
-	echo "Unrecognised argument: Please use either [mysql] OR [account]"
+	echo "Unrecognised argument: Please use either [mysql] OR [account] OR [new-relic]"
 fi
