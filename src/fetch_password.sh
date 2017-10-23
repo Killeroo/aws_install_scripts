@@ -22,7 +22,7 @@ if [ "$1" == "mysql" ]; then
 	grep 'mysql_password=' $org_dir/passwords.conf | awk -F= '{ print  $2 }'
 elif [ "$1" == "account" ]; then
 	grep 'account_password=' $org_dir/passwords.conf | awk -F= '{ print  $2 }'
-elif
+elif [ "$1" == "new-relic" ]; then
 	grep 'new-relic_key=' $org_dir/passwords.conf | awk -F= '{ print  $2 }'
 else
 	echo "Unrecognised argument: Please use either [mysql] OR [account]"
