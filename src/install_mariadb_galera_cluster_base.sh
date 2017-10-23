@@ -10,6 +10,14 @@ else
 	node_ip=$2
 fi
 
+# Fetch account password from passwords.conf
+password=$(bash $PWD/fetch_password.sh new-relic)
+if [[ -z "${password// }" ]]; then
+	echo "***NO ACCOUNT PASSWORD FOUND IN PASSWORDS.CONF***"
+	echo "Please ensure a password is entered in passwords.conf and try again"
+	exit
+fi
+
 # Get basic packages 
 sudo apt-get update -y
 sudo apt-get install -y nano git software-properties-common rsync sudo ufw expect
@@ -44,6 +52,6 @@ echo
 
 # Create account and login
 sudo adduser --system --home /home/$user --disabled-password --shell /bin/bash $user
-(echo "password"; echo "password"; ) | sudo passwd $user
+(echo "$password"; echo "$password"; ) | sudo passwd $user
 sudo usermod -aG sudo $user
 #sudo su - $user

@@ -7,15 +7,6 @@ if [ $sourced -ne 1 ]; then
 	exit;
 fi
 
-key=$(bash $PWD/fetch_password.sh new-relic)
-if [[ -z "${key// }" ]]; then
-	echo "***NO NEW-RELIC KEY FOUND IN PASSWORDS.CONF***"
-	echo "Please ensure a key is entered in src/password.conf and try again"
-	exit
-fi
-echo $key
-exit
-
 # Add new-relic repo
 echo 'deb http://apt.newrelic.com/debian/ newrelic non-free' | sudo tee /etc/apt/sources.list.d/newrelic.list
 
@@ -29,7 +20,12 @@ sudo apt-get -y update
 sudo apt-get -y install newrelic-sysmond
 
 # fetch and add api key
-
+key=$(bash $PWD/fetch_password.sh new-relic)
+if [[ -z "${key// }" ]]; then
+	echo "***NO NEW-RELIC KEY FOUND IN PASSWORDS.CONF***"
+	echo "Please ensure a key is entered in src/password.conf and try again"
+	exit
+fi
 #sudo nrsysmond-config --set license_key=$key
 
 # Start new-relic service
