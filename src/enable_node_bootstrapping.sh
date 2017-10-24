@@ -39,4 +39,4 @@ if [ ! -f /var/lib/mysql/grastate.dat ]; then
 fi
 
 sed -i "s|safe_to_bootstrap:.*|safe_to_bootstrap: 1|" /var/lib/mysql/grastate.dat
-echo "Enabled safe_to_bootstrap for galera"
+echo "Enabled safe_to_bootstrap for galera node"

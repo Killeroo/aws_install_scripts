@@ -51,7 +51,7 @@ sudo bash ./update_galera_config.sh $3
 read -r -p "Setting up main node? [Y/n] " response
 case "$response" in 
 	[yY][eE][sS]|[yY])
-		sudo bash ./enable_node_bootstrapping
+		sudo bash ./enable_node_bootstrapping.sh
 		sudo bash ./start_galera_cluster.sh
 		;;
 	*)
@@ -64,4 +64,6 @@ cd ..
 echo "Installation complete. Galera is now running on this machine"
 echo "Signing into account..."
 
+# Sign new user in
+user="galera-node-$1"
 sudo su - $user
