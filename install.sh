@@ -20,6 +20,14 @@ if [[ $EUID -ne 0 ]]; then
 	exit;
 fi
 
+# Check password exists in passwords.conf
+password=$(bash $PWD/src/fetch_password.sh new-relic)
+if [[ -z "${password// }" ]]; then
+	echo "***NO ACCOUNT PASSWORD FOUND IN PASSWORDS.CONF***"
+	echo "Please ensure a password is entered in passwords.conf and try again"
+	exit
+fi
+
 # Run scripts
 sudo bash ./src/install_mariadb_galera_cluster_base.sh $1 $2 
 read -r -p "Would you like to install new-relic? [Y/n] " response
