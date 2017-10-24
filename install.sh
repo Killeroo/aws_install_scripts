@@ -21,7 +21,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # Check password exists in passwords.conf
-password=$(bash $PWD/src/fetch_password.sh new-relic)
+password=$(bash $PWD/src/fetch_password.sh account)
 if [[ -z "${password// }" ]]; then
 	echo "***NO ACCOUNT PASSWORD FOUND IN PASSWORDS.CONF***"
 	echo "Please ensure a password is entered in passwords.conf and try again"
