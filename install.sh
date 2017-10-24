@@ -22,6 +22,14 @@ fi
 
 # Run scripts
 sudo bash ./src/install_mariadb_galera_cluster_base.sh $1 $2 
+read -r -p "Would you like to install new-relic? [Y/n] " response
+case "$response" in 
+	[yY][eE][sS]|[yY])
+		sudo bash ./src/install_new-relic.sh
+		;;
+	*)
+		;;
+esac
 read -r -p "Would you like to add support for MySQL Workbench? [Y/n] " response
 case "$response" in 
 	[yY][eE][sS]|[yY])

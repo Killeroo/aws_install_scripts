@@ -3,7 +3,7 @@
 # Check if script is being run with bash
 [[ $_ != $0 ]] && sourced=1 || sourced=0
 if [ $sourced -ne 1 ]; then
-	echo "Please use 'bash fetch_password.sh to run the script"
+	echo "Please use 'bash install_new-relic.sh to run the script"
 	exit;
 fi
 
@@ -23,11 +23,11 @@ sudo apt-get -y install newrelic-sysmond
 key=$(bash $PWD/fetch_password.sh new-relic)
 if [[ -z "${key// }" ]]; then
 	echo "***NO NEW-RELIC KEY FOUND IN PASSWORDS.CONF***"
-	echo "Please ensure a key is entered in src/password.conf and try again"
+	echo "Please ensure a key is entered in passwords.conf and try again"
 	exit
 fi
-#sudo nrsysmond-config --set license_key=$key
+sudo nrsysmond-config --set license_key=$key
 
 # Start new-relic service
 #systemctl start newrelic-sysmond
-#/etc/init.d/newrelic-sysmond start
+sudo /etc/init.d/newrelic-sysmond start
