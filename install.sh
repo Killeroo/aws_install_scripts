@@ -29,11 +29,12 @@ if [[ -z "${password// }" ]]; then
 fi
 
 # Run scripts
-sudo bash ./src/install_mariadb_galera_cluster_base.sh $1 $2 
+cd src/
+sudo bash ./install_mariadb_galera_cluster_base.sh $1 $2 
 read -r -p "Would you like to install new-relic? [Y/n] " response
 case "$response" in 
 	[yY][eE][sS]|[yY])
-		sudo bash ./src/install_new-relic.sh
+		sudo bash ./install_new-relic.sh
 		;;
 	*)
 		;;
@@ -41,23 +42,24 @@ esac
 read -r -p "Would you like to add support for MySQL Workbench? [Y/n] " response
 case "$response" in 
 	[yY][eE][sS]|[yY])
-		sudo bash ./src/add_workbench_support.sh
+		sudo bash ./add_workbench_support.sh
 		;;
 	*)
 		;;
 esac
-sudo bash ./src/update_galera_config.sh $3 
+sudo bash ./update_galera_config.sh $3 
 read -r -p "Setting up main node? [Y/n] " response
 case "$response" in 
 	[yY][eE][sS]|[yY])
-		sudo bash ./src/enable_node_bootstrapping
-		sudo bash ./src/start_galera_cluster.sh
+		sudo bash ./enable_node_bootstrapping
+		sudo bash ./start_galera_cluster.sh
 		;;
 	*)
-		sudo bash ./src/start_galera_node.sh
+		sudo bash ./start_galera_node.sh
 		;;
 esac
-sudo bash ./src/show_galera_status.sh
+sudo bash ./show_galera_status.sh
+cd ..
 
 echo "Installation complete. Galera is now running on this machine"
 echo "Signing into account..."

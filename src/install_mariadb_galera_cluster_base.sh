@@ -29,7 +29,7 @@ sudo apt-get update
 sudo apt-get install -y mariadb-server
 
 # Copy and update galera config
-sudo cp ./galera.cnf /etc/mysql/conf.d/galera.cnf
+sudo cp $PWD/galera.cnf /etc/mysql/conf.d/galera.cnf
 echo "wsrep_node_address=\"$node_ip\"" >> /etc/mysql/conf.d/galera.cnf
 echo "wsrep_node_name=\"$user\"" >> /etc/mysql/conf.d/galera.cnf
 echo "wsrep_cluster_address=\"gcomm://1.1.1.1,2.2.2.2,3.3.3.3\"" >> /etc/mysql/conf.d/galera.cnf
@@ -52,6 +52,6 @@ echo
 
 # Create account and login
 sudo adduser --system --home /home/$user --disabled-password --shell /bin/bash $user
-(echo "$password"; echo "$password"; ) | sudo passwd $user
+(echo $password; echo $password; ) | sudo passwd $user
 sudo usermod -aG sudo $user
 #sudo su - $user
