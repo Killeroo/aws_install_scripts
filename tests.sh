@@ -15,6 +15,14 @@ fi
 
 sudo bash ./src/create_test_data.sh
 sudo bash ./src/view_test_data.sh
-sudo bash ./src/remove_test_data.sh
+
+read -r -p "Would you like to remove test data? [Y/n] " response
+case "$response" in 
+	[yY][eE][sS]|[yY])
+		sudo bash ./src/remove_test_data.sh
+		;;
+	*)
+		;;
+esac
 
 echo "Test complete."
