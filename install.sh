@@ -58,9 +58,10 @@ case "$response" in
 		sudo bash ./start_galera_node.sh
 		;;
 esac
-sudo bash ./show_galera_status.sh
+sudo systemctl --no-pager --lines=0 status mysql
 cd ..
 
+echo
 echo "Installation complete. Galera is now running on this machine"
 echo "Signing into account..."
 
