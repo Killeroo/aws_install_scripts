@@ -15,3 +15,6 @@ wsrep_cluster_name="test_cluster"
 wsrep_sst_method=rsync
 
 # Galera Node and Cluster Configuration
+wsrep_node_address=
+wsrep_node_name=
+wsrep_cluster_address=

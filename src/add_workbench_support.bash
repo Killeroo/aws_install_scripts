@@ -4,23 +4,12 @@
 # into the instance
 # Based on: https://serverfault.com/a/692131
 
-# Check if script is being run with bash
-[[ $_ != $0 ]] && sourced=1 || sourced=0
-if [ $sourced -ne 1 ]; then
-	echo "Please use 'bash update_galera_config.sh to run the script"
-	exit;
-fi
-
-# Root check
-if [[ $EUID -ne 0 ]]; then
-	echo "Please run script as root"
-	exit;
-fi
-
 # Check config file exists
 if [ ! -f /etc/ssh/sshd_config ]; then
-	echo "      ******SSH config file not found********"
-	echo "Make sure SSH is installed then try again"
+	echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+	echo "@@        SSH CONFIG FILE NOT FOUND!     @@"
+	echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+	echo "Make sure SSH is installed then try again."
 	echo
 	exit;
 fi
@@ -31,4 +20,4 @@ sudo echo "KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sh
 # Restart SSH service
 sudo systemctl restart ssh
 
-echo "***SSH CONFIG UPDATED***"
+echo "> ssh config updated."

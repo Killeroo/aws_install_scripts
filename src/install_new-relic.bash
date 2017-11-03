@@ -3,7 +3,9 @@
 # Check if script is being run with bash
 [[ $_ != $0 ]] && sourced=1 || sourced=0
 if [ $sourced -ne 1 ]; then
-	echo "Please use 'bash install_new-relic.sh to run the script"
+	echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+	echo "@@     PLEASE RUN SCRIPT WITH BASH!      @@"
+	echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 	exit;
 fi
 
@@ -20,13 +22,16 @@ sudo apt-get -y update
 sudo apt-get -y install newrelic-sysmond
 
 # fetch and add api key
-key=$(bash $PWD/fetch_password.sh new-relic)
-if [[ -z "${key// }" ]]; then
-	echo "***NO NEW-RELIC KEY FOUND IN PASSWORDS.CONF***"
-	echo "Please ensure a key is entered in passwords.conf and try again"
+source $(dirname $PWD)/setup.cnf # Load config file
+if [[ -z "${newrelic_key// }" ]]; then
+	echo
+	echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+	echo "@@ NO NEW-RELIC KEY FOUND IN SETUP.CNF!  @@"
+	echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+	echo "Please ensure a key is entered in setup.cnf and try again"
 	exit
 fi
-sudo nrsysmond-config --set license_key=$key
+sudo nrsysmond-config --set license_key=$newrelic_key
 
 # Start new-relic service
 #systemctl start newrelic-sysmond

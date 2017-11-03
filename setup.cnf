@@ -1,0 +1,16 @@
+# MySQL/MariaDB password
+mysql_password=
+
+# Account info
+account_name=
+account_password=
+
+# new-relic api key
+newrelic_key=
+
+# Galera config
+galera_cluster_name=
+galera_node_name=
+
+# Galera cluster addresses (EG: 1.1.1.1,2.2.2.2,3.3.3.3)
+galera_cluster_addresses=

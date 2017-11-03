@@ -3,7 +3,7 @@
 # Arguments check
 if [ $# -ne 2 ]; then
 	echo "Not enough arguments:"
-	echo "Usage: run_query.sh \"[Query]\" [DB]"
+	echo "Usage: run_query.bash \"[Query]\" [DB]"
 	exit
 fi
 
