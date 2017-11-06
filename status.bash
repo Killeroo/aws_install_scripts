@@ -10,10 +10,11 @@ echo
 echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 echo "@@       GALERA CLUSTER STATUS       @@"
 echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-sudo mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_cluster_status'"
-sudo mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_cluster_size'"
-sudo mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_local_commits'"
-sudo mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_connected'"
+source $PWD/setup.cnf
+sudo mysql -u root -p $mysql_password -e "SHOW STATUS LIKE 'wsrep_cluster_status'"
+sudo mysql -u root -p $mysql_password -e "SHOW STATUS LIKE 'wsrep_cluster_size'"
+sudo mysql -u root -p $mysql_password -e "SHOW STATUS LIKE 'wsrep_local_commits'"
+sudo mysql -u root -p $mysql_password -e "SHOW STATUS LIKE 'wsrep_connected'"
 
 echo 
 echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"

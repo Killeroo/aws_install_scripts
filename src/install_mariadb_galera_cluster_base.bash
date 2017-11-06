@@ -14,7 +14,6 @@ sudo apt-get install -y mariadb-server
 sudo cp $PWD/galera.cnf /etc/mysql/conf.d/galera.cnf
 
 # Setup galera firewalls exceptions (including SSH and workbench)
-#sudo ufw enable
 expect -c "
 spawn sudo ufw enable
 expect -nocase \"Command may disrupt existing ssh connections. Proceed with operation (y|n)?\" {send \"y\r\"; interact}
