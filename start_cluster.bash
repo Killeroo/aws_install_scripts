@@ -8,4 +8,4 @@ echo "> Starting new Galera Cluster..."
 sudo galera_new_cluster
 
 # Restart mysql service
-sudo bash ./service_controller.bash mysql start
+sudo bash ./src/service_controller.bash mysql start
