@@ -17,7 +17,7 @@ else
 fi
 
 # Perform service operation
-if [ $1 = "php" ]; then
+if [ $1 = "mysql" ]; then
 	sudo systemctl $operator mysql
 else
 	echo "UNKOWN ARGUMENT: Use either [ mysql ] "
