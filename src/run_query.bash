@@ -8,16 +8,17 @@ if [ $# -ne 2 ]; then
 fi
 
 # Switch back dir to read config file
-cd .. & source $PWD/setup.cnf
+cd .. 
+source $PWD/setup.cnf
+cd src/
 
 # Write query to file
-echo $1 > $PWD/temp.sql
+echo "$1" > $PWD/temp.sql
+
+echo "> Executing \"$1\" @ [$2]..."
 
 # Execute query by piping into mysql
-mysql -u root -p$mysql_password < $PWD/temp.sql
+mysql -u root -p$mysql_password $2 < $PWD/temp.sql
 
 # Delete temp file
-rm $PWD/temp.sql
-
-# Switch back
-cd src/
+rm -f $PWD/temp.sql
