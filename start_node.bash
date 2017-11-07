@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo bash ./service_controller.bash mysql start
+sudo bash ./src/service_controller.bash mysql start
