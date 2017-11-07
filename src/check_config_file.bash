@@ -24,6 +24,8 @@ elif [ -z $galera_node_name ]; then
     echo 2 && exit;
 elif [ -z $galera_cluster_addresses ]; then
     echo 2 && exit;
+elif [ -z $mariadb_bind_address ]; then
+    echo 2 && exit;
 fi
 
 # config file is good

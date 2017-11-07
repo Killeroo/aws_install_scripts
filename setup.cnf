@@ -8,6 +8,9 @@ account_password=
 # new-relic api key
 newrelic_key=
 
+# MariaDB config
+mariadb_bind_address=
+
 # Galera config
 galera_cluster_name=
 galera_node_name=

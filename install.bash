@@ -47,6 +47,8 @@ sudo bash ./setup_debconf.bash $mysql_password
 echo "-> Installing base packages..."
 address=$(ifconfig eth0 | grep "inet addr" | cut -d ':' -f 2 | cut -d ' ' -f 1) # Get local ip
 sudo bash ./install_mariadb_galera_cluster_base.bash
+echo "-> Updating MariaDB config..."
+sudo bash ./update_mariadb_config.bash bind-address $mariadb_bind_address
 echo "-> Updating Galera config..."
 sudo bash ./update_galera_config.bash wsrep_cluster_name $galera_cluster_name
 sudo bash ./update_galera_config.bash wsrep_cluster_address "gcomm://$galera_cluster_addresses"
