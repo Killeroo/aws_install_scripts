@@ -60,6 +60,17 @@ echo "-> Adding support for MySQL Workbench..."
 sudo bash ./add_workbench_support.bash
 echo "-> Creating account..."
 sudo bash ./create_account.bash
+cd .. # Switch back directories to start cluster
+echo "-> Starting MariaDB Galera..."
+if [ $main_node = "y" ]; then
+	sudo bash ./start_cluster.bash
+elif [ $main_node = "n" ]; then
+	sudo bash ./start_node.bash
+fi
+echo "-> MariaDB Galera Started."
+cd src/
+echo "-> Updating user table..."
+sudo bash ./run_query.bash "GRANT ALL PRIVILEGES ON *.* TO 'root'@'$mysql_bind_address' IDENTIFIED BY '$mysql_password' WITH GRANT OPTION;" mysql
 
 # Navigate back
 cd ..
