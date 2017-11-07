@@ -42,6 +42,8 @@ source $PWD/setup.cnf
 # Navigate to script directory
 cd src/
 
+echo "-> Preinstallation setup..."
+sudo bash ./setup_debconf.bash $mysql_password
 echo "-> Installing base packages..."
 address=$(ifconfig eth0 | grep "inet addr" | cut -d ':' -f 2 | cut -d ' ' -f 1) # Get local ip
 sudo bash ./install_mariadb_galera_cluster_base.bash
