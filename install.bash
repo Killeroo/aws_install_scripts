@@ -60,7 +60,7 @@ echo "-> Adding support for MySQL Workbench..."
 sudo bash ./add_workbench_support.bash
 echo "-> Creating account..."
 sudo bash ./create_account.bash
-cd .. # Switch back directories to start cluster
+cd ..
 echo "-> Starting MariaDB Galera..."
 if [ $main_node = "y" ]; then
 	sudo bash ./start_cluster.bash
